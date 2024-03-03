@@ -114,22 +114,26 @@ def main():
                 nm=int(input("Ingrese cantidad de medicamentos: "))
                 lista_med=[]
 
-                LM = []
+                LM = [0]
                 for i in range(0,nm):
                     nombre_medicamentos = input("Ingrese el nombre del medicamento: ")
+                    medicamento = Medicamento()
                     A = True
                     for m in LM:
-                        if nombre_medicamentos == m:
+                        if m == nombre_medicamentos:
+                            nm = nm + 1
                             print("Ya esta registrado")
                             A = False
+                            break
 
                     if A == True:
                         dosis =int(input("Ingrese la dosis: "))
-                        medicamento = Medicamento()
                         medicamento.asignarNombre(nombre_medicamentos)
                         medicamento.asignarDosis(dosis)
                         lista_med.append(medicamento)
                         LM.append(nombre_medicamentos)
+                        A = True 
+                        continue
                     elif A == False:
                         continue
 
