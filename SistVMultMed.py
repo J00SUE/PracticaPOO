@@ -117,16 +117,21 @@ def main():
                 LM = []
                 for i in range(0,nm):
                     nombre_medicamentos = input("Ingrese el nombre del medicamento: ")
+                    A = True
                     for m in LM:
                         if nombre_medicamentos == m:
                             print("Ya esta registrado")
-                            LM.append(nombre_medicamentos)
+                            A = False
 
-                    dosis =int(input("Ingrese la dosis: "))
-                    medicamento = Medicamento()
-                    medicamento.asignarNombre(nombre_medicamentos)
-                    medicamento.asignarDosis(dosis)
-                    lista_med.append(medicamento)
+                    if A == True:
+                        dosis =int(input("Ingrese la dosis: "))
+                        medicamento = Medicamento()
+                        medicamento.asignarNombre(nombre_medicamentos)
+                        medicamento.asignarDosis(dosis)
+                        lista_med.append(medicamento)
+                        LM.append(nombre_medicamentos)
+                    elif A == False:
+                        continue
 
                 mas= Mascota()
                 mas.asignarNombre(nombre)
