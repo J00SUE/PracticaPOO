@@ -12,6 +12,14 @@ class Medicamento:
         self.__nombre = med 
     def asignarDosis(self,med):
         self.__dosis = med 
+
+class Canino:
+    def __init__(self,canino):
+        self._canino = canino
+
+class Felino:
+    def __init__(self,felino):
+        self._felino = felino 
         
 class Mascota:
     
@@ -22,6 +30,9 @@ class Mascota:
         self.__peso=" "
         self.__fecha_ingreso=" "
         self.__lista_medicamentos=[]
+        self.biblio_F = {}
+        self.biblio_C = {}
+
         
     def verNombre(self):
         return self.__nombre
@@ -48,6 +59,12 @@ class Mascota:
         self.__fecha_ingreso=f
     def asignarLista_Medicamentos(self,n):
         self.__lista_medicamentos = n 
+
+    def asignarcanino(self,n):
+        self._biblio_C = n
+
+    def asignarfelino(self,n):
+        self._biblio_F = n
     
 class sistemaV:
     def __init__(self):
@@ -108,7 +125,7 @@ def main():
             #   verificacion=servicio_hospitalario.verDatosPaciente(historia)
             if servicio_hospitalario.verificarExiste(historia) == False:
                 nombre=input("Ingrese el nombre de la mascota: ")
-                tipo=input("Ingrese el tipo de mascota (felino o canino): ")
+                tipo=input("Ingrese el tipo de mascota (felino o canino): ")              
                 peso=int(input("Ingrese el peso de la mascota: "))
                 fecha=input("Ingrese la fecha de ingreso (dia/mes/año): ")
                 nm=int(input("Ingrese cantidad de medicamentos: "))
