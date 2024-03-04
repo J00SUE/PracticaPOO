@@ -30,8 +30,7 @@ class Mascota:
         self.__peso=" "
         self.__fecha_ingreso= 0 #cambiamos a numero porque sera un int
         self.__lista_medicamentos=[]
-        self.biblio_F = {}  #añadimos las bibliotecas 
-        self.biblio_C = {}
+        
 
         
     def verNombre(self):
@@ -61,15 +60,19 @@ class Mascota:
         self.__lista_medicamentos = n 
 
 #setter
-    def asignarcanino(self,n):
-        self._biblio_C = n    
-
-    def asignarfelino(self,n):
-        self._biblio_F = n   
+    #
     
 class sistemaV:
     def __init__(self):
-        self.__lista_mascotas = []
+        self.__lista_mascotas = [] #corregimos bibliotecas para que se guarden en sistemaV
+        self.__biblio_F = {}  #añadimos las bibliotecas 
+        self.__biblio_C = {}
+
+    def asignarcanino(self, n, historia):
+        self.__biblio_C[n] = n
+
+    def asignarfelino(self, n, historia):
+        self.__biblio_F[n] = n 
 
     
     def verificarExiste(self,historia):
@@ -108,18 +111,13 @@ class sistemaV:
         return False
     
     def eliminarM(self, historia, nombre_medicamento):
-        for masc in self.__lista_mascotas:
-            if historia == masc.verHistoria():
-                TT = historia
-                continue
-        PP = Mascota.verLista_Medicamentos(TT)
-        for s in self.__lista_mascotas:
-            if historia == s.verHistoria():
-                for m in self.verMedicamento:
-                    if m == Medicamento.verNombre:
-                        PP.remove(nombre_medicamento)
-                        return True
-                return False
+        PP = self.__lista_mascotas(historia)
+        lista_medicamentos = PP.verLista_medicamentos()
+        for m in lista_medicamentos:
+            if m.verNombre == nombre_medicamento:
+                PP.remove(m)
+               return True
+        return False
         
 
 
@@ -188,14 +186,14 @@ def main():
                     mas = Mascota()
                     felino = {}
                     felino[historia] = mas
-                    mas.asignarfelino(felino[historia])
+                    servicio_hospitalario.asignarfelino(mas,historia)
                     
                 
                 elif tipo == "canino":
                     mas = Mascota()
                     canino = {}
                     canino[historia] = mas
-                    mas.asignarcanino(canino[historia])    
+                    servicio_hospitalario.asignarcanino(mas, historia)    
 
             else:
                 print("Ya existe la mascota con el numero de histoira clinica")
@@ -233,14 +231,15 @@ def main():
                 print("No se ha podido eliminar la mascota")
 
         elif menu ==6:
-            q = int(input("Ingrese la historia clínica de la mascota:"))
-            p = input("Medicamento a eliminar")
-            roku = servicio_hospitalario.eliminarM(q,p)
+            #q = int(input("Ingrese la historia clínica de la mascota:"))
+            #p = input("Medicamento a eliminar")
+            #roku = servicio_hospitalario.eliminarM(q,p)
 
-            if roku == True:
-                print("Medicamento eliminada del sistema con exito")
-            else:
-                print("No se ha podido eliminar el medicamento")
+            #if roku == True:
+            #    print("Medicamento eliminada del sistema con exito")
+            #else:
+            #    print("No se ha podido eliminar el medicamento")
+
             
         elif menu==7:
             print("Usted ha salido del sistema de servicio de hospitalización...")
