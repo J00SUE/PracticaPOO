@@ -28,22 +28,40 @@ class Sistema:
     def __init__(self):
         self.__lista_pacientes = [] 
         
-    def verificarPaciente(self,cedula):
+    def verificarPacienteC(self,dato):  #definimos nuevas funciones encargadas de buscar cedula o nombre
+        encontrado = False
         for p in self.__lista_pacientes:
-            if cedula == p.verCedula():
-                return True 
-        return False
+            if dato == p.verCedula():
+                encontrado = True
+        return encontrado
+    
+    def verificarPacienteN(self,dato):
+        encontrado = False
+        for p in self.__lista_pacientes:
+            if dato == p.verNombre():
+                encontrado = True
+        return encontrado
         
     def ingresarPaciente(self,pac):
         self.__lista_pacientes.append(pac)
         return True
     
-    def verDatosPaciente(self, c):
-        if self.verificarPaciente(c) == False:
+    #getters
+    
+    def verDatosPacienteC(self, c): #definimos la forma en la que veremos los datos ya sea con cedula o nombre
+        if self.verificarPacienteC(c) == False:
             return None
         for p in self.__lista_pacientes:
             #retorne la cedula y la comparo con la ingresada por teclado
             if c == p.verCedula():
+                return p #si encuentro el paciente lo retorno
+            
+    def verDatosPacienteN(self, c):
+        if self.verificarPacienteN(c) == False:
+            return None
+        for p in self.__lista_pacientes:
+            #retorne la cedula y la comparo con la ingresada por teclado
+            if c == p.verNombre():
                 return p #si encuentro el paciente lo retorno
             
     def verNumeroPacientes(self):
