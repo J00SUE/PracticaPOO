@@ -28,7 +28,7 @@ class Mascota:
         self.__historia=0
         self.__tipo=" "
         self.__peso=" "
-        self.__fecha_ingreso=" "
+        self.__fecha_ingreso= 0 #cambiamos a numero porque sera un int
         self.__lista_medicamentos=[]
         self.biblio_F = {}
         self.biblio_C = {}
@@ -65,10 +65,18 @@ class Mascota:
 
     def asignarfelino(self,n):
         self._biblio_F = n
+
+    def eliminarM(lista_med, nombre_medicamento):
+        for m in lista_med:
+            if nombre_medicamento == m.verNombre():
+                lista_med.remove(m)  #opcion con el pop
+                return True  #eliminado con exito
+        return False 
     
 class sistemaV:
     def __init__(self):
         self.__lista_mascotas = []
+
     
     def verificarExiste(self,historia):
         for m in self.__lista_mascotas:
@@ -127,7 +135,10 @@ def main():
                 nombre=input("Ingrese el nombre de la mascota: ")
                 tipo=input("Ingrese el tipo de mascota (felino o canino): ")         
                 peso=int(input("Ingrese el peso de la mascota: "))
-                fecha=input("Ingrese la fecha de ingreso (dia/mes/año): ")
+                import datetime #importamos datetime para usar su funcion
+
+                fecha = datetime.datetime.now() #la fecha se agregara automaticamente con datetime
+                #fecha=input("Ingrese la fecha de ingreso (dia/mes/año): ")
                 nm=int(input("Ingrese cantidad de medicamentos: "))
                 lista_med=[]
 
@@ -180,10 +191,10 @@ def main():
 
         elif menu==2: # Ver fecha de ingreso
             q = int(input("Ingrese la historia clínica de la mascota: "))
-            fecha = servicio_hospitalario.verFechaIngreso(q)
+            fecha_1 = servicio_hospitalario.verFechaIngreso(q)
             # if servicio_hospitalario.verificarExiste == True
-            if fecha != None:
-                print("La fecha de ingreso de la mascota es: " + fecha)
+            if fecha_1 != None:
+                print(fecha_1)
             else:
                 print("La historia clínica ingresada no corresponde con ninguna mascota en el sistema.")
             
@@ -209,7 +220,7 @@ def main():
                 print("Mascota eliminada del sistema con exito")
             else:
                 print("No se ha podido eliminar la mascota")
-        
+            
         elif menu==6:
             print("Usted ha salido del sistema de servicio de hospitalización...")
             break
