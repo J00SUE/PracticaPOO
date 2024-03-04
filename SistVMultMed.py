@@ -13,7 +13,7 @@ class Medicamento:
     def asignarDosis(self,med):
         self.__dosis = med 
 
-class Canino:
+class Canino: #canino y felino heredan de Mascota
     def __init__(self,canino): #agregamos la clase canino 
         self._canino = canino
 
@@ -31,7 +31,7 @@ class Mascota:
         self.__fecha_ingreso= 0 #cambiamos a numero porque sera un int
         self.__lista_medicamentos=[]
         
-
+    #getters
         
     def verNombre(self):
         return self.__nombre
@@ -45,6 +45,8 @@ class Mascota:
         return self.__fecha_ingreso
     def verLista_Medicamentos(self):
         return self.__lista_medicamentos 
+    
+    #setters
             
     def asignarNombre(self,n):
         self.__nombre=n
@@ -59,14 +61,16 @@ class Mascota:
     def asignarLista_Medicamentos(self,n):
         self.__lista_medicamentos = n 
     
-class sistemaV:
+class sistemaV: #sistemaV hereda la informacion de la mascota
     def __init__(self):
         self.__lista_mascotas = [] #corregimos bibliotecas para que se guarden en sistemaV
         self.__biblio_F = {}  #añadimos las bibliotecas 
         self.__biblio_C = {}
 
+    #setters
+        
     def asignarcanino(self, n, historia):
-        self.__biblio_C[historia] = n
+        self.__biblio_C[historia] = n 
 
     def asignarfelino(self, n, historia):
         self.__biblio_F[historia] = n 
@@ -85,6 +89,7 @@ class sistemaV:
     def ingresarMascota(self,mascota):
         self.__lista_mascotas.append(mascota) 
    
+   #getter
 
     def verFechaIngreso(self,historia):
         #busco la mascota y devuelvo el atributo solicitado
@@ -99,6 +104,8 @@ class sistemaV:
             if historia == masc.verHistoria():
                 return masc.verLista_Medicamentos() 
         return None
+    
+    #delete
     
     def eliminarMascota(self, historia):
         for masc in self.__lista_mascotas:
@@ -172,14 +179,14 @@ def main():
                     mas = Mascota()
                     felino = {}
                     felino[historia] = mas
-                    servicio_hospitalario.asignarfelino(mas,historia)
+                    servicio_hospitalario.asignarfelino(mas,historia) #agregamos a la biblioteca felino
                     
                 
                 elif tipo == "canino":
                     mas = Mascota()
                     canino = {}
                     canino[historia] = mas
-                    servicio_hospitalario.asignarcanino(mas, historia)    
+                    servicio_hospitalario.asignarcanino(mas, historia)    #biblioteca canino
 
             else:
                 print("Ya existe la mascota con el numero de histoira clinica")
