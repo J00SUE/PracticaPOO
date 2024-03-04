@@ -14,11 +14,11 @@ class Medicamento:
         self.__dosis = med 
 
 class Canino:
-    def __init__(self,canino):
+    def __init__(self,canino): #agregamos la clase canino 
         self._canino = canino
 
 class Felino:
-    def __init__(self,felino):
+    def __init__(self,felino): #agregamos la clase felino
         self._felino = felino 
         
 class Mascota:
@@ -30,7 +30,7 @@ class Mascota:
         self.__peso=" "
         self.__fecha_ingreso= 0 #cambiamos a numero porque sera un int
         self.__lista_medicamentos=[]
-        self.biblio_F = {}
+        self.biblio_F = {}  #añadimos las bibliotecas 
         self.biblio_C = {}
 
         
@@ -60,18 +60,12 @@ class Mascota:
     def asignarLista_Medicamentos(self,n):
         self.__lista_medicamentos = n 
 
+#setter
     def asignarcanino(self,n):
-        self._biblio_C = n
+        self._biblio_C = n    
 
     def asignarfelino(self,n):
-        self._biblio_F = n
-
-    def eliminarM(lista_med, nombre_medicamento):
-        for m in lista_med:
-            if nombre_medicamento == m.verNombre():
-                lista_med.remove(m)  #opcion con el pop
-                return True  #eliminado con exito
-        return False 
+        self._biblio_F = n   
     
 class sistemaV:
     def __init__(self):
@@ -142,12 +136,12 @@ def main():
                 nm=int(input("Ingrese cantidad de medicamentos: "))
                 lista_med=[]
 
-                LM = []
+                LM = [] #agregamos una lista para verificar medicamentos en una sola mascota
                 for i in range(0,nm):
                     nombre_medicamentos = input("Ingrese el nombre del medicamento: ")
                     medicamento = Medicamento()
-                    A = True
-                    for m in LM:
+                    A = True #variable bandera
+                    for m in LM: #buscamos en la lista
                         if m == nombre_medicamentos:
                             nm = nm + 1
                             print("Ya esta registrado")
@@ -159,7 +153,7 @@ def main():
                         medicamento.asignarNombre(nombre_medicamentos)
                         medicamento.asignarDosis(dosis)
                         lista_med.append(medicamento)
-                        LM.append(nombre_medicamentos)
+                        LM.append(nombre_medicamentos) #agregamos a nuestra lista el medicamento
                         A = True
                         continue
                     elif A == False:
