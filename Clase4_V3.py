@@ -24,7 +24,7 @@ class Paciente:
     def asignarServicio(self,s):
         self.__servicio = s 
         
-class Sistema:    
+class Sistema:    #el sistema hereda la informacion de pacientes 
     def __init__(self):
         self.__lista_pacientes = [] 
         
@@ -60,7 +60,7 @@ class Sistema:
         if self.verificarPacienteN(c) == False:
             return None
         for p in self.__lista_pacientes:
-            #retorne la cedula y la comparo con la ingresada por teclado
+            #retorne el nombre y la comparo con el ingresada por teclado
             if c == p.verNombre():
                 return p #si encuentro el paciente lo retorno
             
@@ -107,7 +107,7 @@ def main():
                 p = sis.verDatosPacienteC(c) 
                 #2. si encuentro al paciente imprimo los datos
                 if p != None:
-                    print("Nombre: " + p.verNombre()) 
+                    print("Nombre: " + p.verNombre()) #se buscan datos con la variable
                     print("Cedula: " + str(p.verCedula())) 
                     print("Genero: " + p.verGenero()) 
                     print("Servicio: " + p.verServicio()) 
@@ -120,7 +120,7 @@ def main():
                 p = sis.verDatosPacienteN(c) 
                 #2. si encuentro al paciente imprimo los datos
                 if p != None:
-                    print("Nombre: " + p.verNombre()) 
+                    print("Nombre: " + p.verNombre()) #se busca los datos con la variable
                     print("Cedula: " + str(p.verCedula())) 
                     print("Genero: " + p.verGenero()) 
                     print("Servicio: " + p.verServicio()) 
