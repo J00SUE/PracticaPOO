@@ -58,9 +58,6 @@ class Mascota:
         self.__fecha_ingreso=f
     def asignarLista_Medicamentos(self,n):
         self.__lista_medicamentos = n 
-
-#setter
-    #
     
 class sistemaV:
     def __init__(self):
@@ -69,10 +66,10 @@ class sistemaV:
         self.__biblio_C = {}
 
     def asignarcanino(self, n, historia):
-        self.__biblio_C[n] = n
+        self.__biblio_C[historia] = n
 
     def asignarfelino(self, n, historia):
-        self.__biblio_F[n] = n 
+        self.__biblio_F[historia] = n 
 
     
     def verificarExiste(self,historia):
@@ -108,18 +105,7 @@ class sistemaV:
             if historia == masc.verHistoria():
                 self.__lista_mascotas.remove(masc)  #opcion con el pop
                 return True  #eliminado con exito
-        return False
-    
-    def eliminarM(self, historia, nombre_medicamento):
-        PP = self.__lista_mascotas(historia)
-        lista_medicamentos = PP.verLista_medicamentos()
-        for m in lista_medicamentos:
-            if m.verNombre == nombre_medicamento:
-                PP.remove(m)
-               return True
-        return False
-        
-
+        return False      
 
 
 def main():
@@ -229,22 +215,10 @@ def main():
                 print("Mascota eliminada del sistema con exito")
             else:
                 print("No se ha podido eliminar la mascota")
-
-        elif menu ==6:
-            #q = int(input("Ingrese la historia clínica de la mascota:"))
-            #p = input("Medicamento a eliminar")
-            #roku = servicio_hospitalario.eliminarM(q,p)
-
-            #if roku == True:
-            #    print("Medicamento eliminada del sistema con exito")
-            #else:
-            #    print("No se ha podido eliminar el medicamento")
-
             
-        elif menu==7:
+        elif menu==6:
             print("Usted ha salido del sistema de servicio de hospitalización...")
             break
-        
         
         else:
             print("Usted ingresó una opción no válida, intentelo nuevamente...")
